@@ -13,3 +13,16 @@ This repo is a work in progress. I will be adding rules one by one based on what
 While investigating sign-in logs I saw that around 10–15 accounts had 191 failed sign-in attempts. The attempts were made from IPs worldwide, including Indonesia, India, Russia, Nigeria and others. This prompted me to suspect a botnet. Attacks were a mix of brute force and password spray. There were repeated attempts against one account which triggered lockouts (error 50053), plus spray attempts across several accounts. Some attempts targeted Microsoft Azure CLI, which regular users do not use.
 
 None of the attempts resulted in a successful sign-in but no alert fired either. I only found the attack by accident while practising KQL queries. An attack like this should trigger a detection rule automatically instead of relying on luck. That's why I'm building my rules as code.
+
+## Roadmap
+
+- [x] Project setup and readme
+- Rule schema (which fields every rule must have)
+- First rules to cover: brute force (DAC-0001), password spray (DAC-0002)
+- Automated validation with pytest
+- CI with GitHub Actions
+- ATT&CK coverage overview
+
+## Data handling
+
+No tenant data ends up in this repo. Usernames, IP addresses, query results and organisation-specific information stays out. The rules contain only generic detection logic.
